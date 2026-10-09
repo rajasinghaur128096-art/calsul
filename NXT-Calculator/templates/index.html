@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXT CALCULATOR — Engineering Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="app">
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">N</div>
+            <div>
+                <h1>NXT CALCULATOR</h1>
+                <p>Engineering Calculator</p>
+            </div>
+        </div>
+        <button id="themeBtn" class="icon-btn">☀</button>
+    </header>
+
+    <nav class="mode-nav">
+        <button class="mode active" data-mode="basic">Basic</button>
+        <button class="mode" data-mode="scientific">Scientific</button>
+        <button class="mode" data-mode="electrical">Electrical</button>
+        <button class="mode" data-mode="electronics">Electronics</button>
+        <button class="mode" data-mode="mechanical">Mechanical</button>
+        <button class="mode" data-mode="civil">Civil</button>
+        <button class="mode" data-mode="computer">Computer</button>
+        <button class="mode" data-mode="converter">Units</button>
+        <button class="mode" data-mode="formulas">Formulas</button>
+    </nav>
+
+    <section id="basicPanel" class="panel">
+        <div class="display">
+            <div class="display-top"><span id="date"></span><span id="time"></span></div>
+            <div id="basicExpression" class="small-display"></div>
+            <div id="basicResult" class="big-display">0</div>
+        </div>
+        <div class="keypad">
+            <button class="fn" data-basic="clear">AC</button>
+            <button class="fn" data-basic="delete">DEL</button>
+            <button class="fn" data-basic="percent">%</button>
+            <button class="op" data-basic-value="/">÷</button>
+            <button data-basic-value="7">7</button><button data-basic-value="8">8</button><button data-basic-value="9">9</button><button class="op" data-basic-value="*">×</button>
+            <button data-basic-value="4">4</button><button data-basic-value="5">5</button><button data-basic-value="6">6</button><button class="op" data-basic-value="-">−</button>
+            <button data-basic-value="1">1</button><button data-basic-value="2">2</button><button data-basic-value="3">3</button><button class="op" data-basic-value="+">+</button>
+            <button class="fn" data-basic="sign">+/−</button><button data-basic-value="0">0</button><button data-basic-value=".">.</button><button class="equals" data-basic="calculate">=</button>
+        </div>
+    </section>
+
+    <section id="scientificPanel" class="panel hidden">
+        <div class="section-head"><div><h2>Scientific</h2><p>Enter an expression using functions.</p></div><span class="tag">RAD</span></div>
+        <input id="scientificInput" class="expression-input" placeholder="Example: sin(pi/2) + sqrt(25)">
+        <div class="scientific-grid">
+            <button data-scientific="sin(">sin</button><button data-scientific="cos(">cos</button><button data-scientific="tan(">tan</button><button data-scientific="sqrt(">√</button>
+            <button data-scientific="asin(">sin⁻¹</button><button data-scientific="acos(">cos⁻¹</button><button data-scientific="atan(">tan⁻¹</button><button data-scientific="log(">log</button>
+            <button data-scientific="ln(">ln</button><button data-scientific="pi">π</button><button data-scientific="e">e</button><button data-scientific="^2">x²</button>
+        </div>
+        <button id="scientificCalculate" class="wide-btn">Calculate with Python</button>
+        <div id="scientificAnswer" class="answer-box">Ready</div>
+    </section>
+
+    <section id="engineeringPanel" class="panel hidden">
+        <div class="section-head"><div><h2 id="engTitle">Engineering</h2><p id="engDescription">Choose a calculator.</p></div><span id="engTag" class="tag">ENGINE</span></div>
+        <select id="engSelect" class="select"></select>
+        <div id="engFields" class="fields"></div>
+        <button id="engCalculate" class="wide-btn">Calculate</button>
+        <div id="engAnswer" class="answer-box">Enter values and calculate.</div>
+    </section>
+
+    <section id="converterPanel" class="panel hidden">
+        <div class="section-head"><div><h2>Unit Converter</h2><p>Common engineering units.</p></div><span class="tag">UNITS</span></div>
+        <select id="conversionSelect" class="select"></select>
+        <input id="conversionValue" class="number-input" type="number" placeholder="Enter value">
+        <button id="convertBtn" class="wide-btn">Convert</button>
+        <div id="conversionAnswer" class="answer-box">Ready</div>
+    </section>
+
+    <section id="formulasPanel" class="panel hidden">
+        <div class="section-head"><div><h2>Formula Library</h2><p>Quick reference for your studies.</p></div><span class="tag">REFERENCE</span></div>
+        <div id="formulaList" class="formula-list"></div>
+    </section>
+
+    <section class="history panel">
+        <div class="section-head">
+            <div><h2>Recent calculations</h2><p>Stored for this browser session.</p></div>
+            <button id="clearHistory" class="text-btn">Clear</button>
+        </div>
+        <div id="historyList" class="history-list"><div class="empty">No calculations yet</div></div>
+    </section>
+
+    <footer><span>Python + Flask engine</span><span>•</span><span>Designed by Shahil Patel</span></footer>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
